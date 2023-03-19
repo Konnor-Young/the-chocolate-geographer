@@ -1,0 +1,38 @@
+# Chocolate Geographer
+
+Site built using Node.js for backend Vue.js for front end, and Mongo DB for data storage.
+Design Files are png's in the Design-Stage folder.
+The link to the figma 'prototype':
+<https://www.figma.com/proto/Hk8x5e0cHMc0YFUNj1umw8/Chocolate-Geographer-Mock-up?scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&node-id=1%3A2>
+I also attached a screen shot of the story-board.
+
+## RESOURCES
+
+    #### Seats
+        This Collection deals with the people attending each event and how many people are in each party.
+        {
+            name: (the last name of the person)
+            party: (the number of people in their party)
+            date: (the selected date for use in code)
+            dateRef: (an object of type mongoose.Schema refering to the Dates collection)
+        }
+    #### Dates
+    This Collection holds all available tasting dates, and how many seats are available at each.
+        {
+            date: (the available date)
+            seats: (the remaining open seats)
+        }
+    #### Users
+        This collection will only ever hold a few users. The users are the only people allowed to make changes to the db.
+        {
+            username: ()
+            password: ()
+        }
+    ##PATHS
+        GET/users
+        GET/dates
+        POST/dates
+        DELETE/dates
+        PUT/dates
+        GET/seats
+        POST/seats

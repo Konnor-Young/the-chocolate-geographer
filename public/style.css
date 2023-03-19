@@ -1,0 +1,535 @@
+@font-face {
+    font-family: "Roxie";
+    src: url("fonts/HeaderRoxieRossa.ttf");
+}
+*{
+    margin: 0, auto;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    width: 100%;
+    margin: 0;
+}
+.body-no-scroll{
+    overflow: hidden;
+}
+#wrapper{
+    background-color: #FFFFFF;
+}
+.navContainer{
+    background-color: #EFD5C4;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 18%);
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.navContainer img{
+    height: 75px;
+    margin: 5px;
+    margin-left: 20px;
+}
+nav{
+    width: 60%;
+    background-color: #EFD5C4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 25px;
+}
+a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #214857;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.5s;
+}
+a:hover{
+    color: #a6a585;
+}
+nav p{
+    text-decoration: none;
+    font-size: 20px;
+    color: #214857;
+    font-weight: bold;
+    text-align: right;
+    transition: all 0.5s;
+    margin-left: 30px;
+}
+nav p:hover{
+    color: #a6a585;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #EFD5C4;
+    min-width: 209px;
+    padding: 9px 16px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    top: 100%;
+    right: -30%;
+}
+.dropdown-menu a{
+    padding-right: 0;
+    padding-top: 15px;
+    text-align: right;
+}
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+.dropdown-menu #socials{
+    display: flex;
+    flex-direction: row;
+}
+.dropdown-menu #socials img{
+    width: 30px;
+    height: 30px;
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+    padding: 20px;
+}
+.exitIcon{
+    position: fixed;
+    top: 15%;
+    left: 90%;
+}
+.exitIcon .xIcon{
+    background-image: url(img/xIcon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+}
+.contact-overlay{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EFD5C4;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 80%);
+    padding: 20px;
+}
+.info-overlay{
+    max-width: 55%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EFD5C4;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 80%);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    color: #35453A;
+    font-weight: bold;
+    border-radius: 30px;
+}
+#who-img-contain{
+    width: 45%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}
+#who-img{
+    background-image: url(img/TheChocolateGeographer-7.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#who-txt{
+    width: 45%;
+    margin-left: 20px;
+}
+.expect-overlay{
+    max-width: 55%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background-color: #EFD5C4;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 80%);
+    padding: 20px;
+    color: #35453A;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+.pic-text-flex{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 5px auto;
+    justify-content: space-around;
+}
+.pic-text-flex p{
+    width: 45%;
+}
+.expect-img-contain{
+    width: 45%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#expect-1{
+    background-image: url(img/TheChocolateGeographer-42.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#expect-2{
+    background-image: url(img/TheChocolateGeographer-37.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#expect-3{
+    background-image: url(img/TheChocolateGeographer-51.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.contact-overlay p{
+    font-size: 25px;
+    color: #35453A;
+    font-weight: bold;
+    margin: 0;
+}
+.contact-overlay a{
+    font-size: 20px;
+    color: #214857;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: all 0.5s;
+}
+.contact-overlay a:hover{
+    color: #5e828b;
+}
+.xIcon{
+    cursor: pointer;
+}
+.form-text{
+    font-size: small !important;
+    padding: 3px;
+}
+form input{
+    width: 100%;
+}
+form textarea{
+    width: 100%;
+}
+#heroCTA{
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+}
+#CTAimageContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+#CTA{
+    width: 50%;
+    margin: 5px;
+}
+#CTA p{
+    font-size: 20px;
+}
+#CTAimage{
+    background-image: url(img/TheChocolateGeographer-25.jpg);
+    height: 475px;
+    width: 318px;
+    max-width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 125px;
+}
+#heroCTA h1{
+    color: #214857;
+    font-family: "Roxie", sans-serif;
+    font-weight: bolder;
+    font-size: 35px;
+}
+#heroCTA h6{
+    color: #214857;
+    font-size: 20px;
+}
+button{
+    background-color: #DDBF69;
+    border: solid #BC9F4A;
+    color: #35453A;
+    transition: all 0.5s;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 18%);
+    cursor: pointer;
+}
+button:hover{
+    background-color: #BC9F4A;
+    box-shadow: none;
+}
+#divider-line{
+    width: 80%;
+    background-color: #214857;
+    height: 2px;
+    margin: 0 auto;
+}
+#bio-area{
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+}
+#bio-image-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+#bio-image{
+    background-image: url(img/TheChocolateGeographer-38.jpg);
+    height: 100%;
+    width: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+}
+#bio-text{
+    width: 50%;
+    margin: 5px;
+}
+#bio-text p {
+    font-size: 20px;
+}
+#bio-text h2{
+    color: #214857;
+    font-family: "Roxie", sans-serif;
+    font-weight: bolder;
+    font-size: 25px;
+}
+#reserveCTA{
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 10px 25px 10px 25px;
+}
+#empty-div{
+    height: 80px;
+}
+#bookingSection{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#bookingCTA{
+    width: 90%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: 500;
+}
+#bookingCalendar{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+}
+#bookingTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #EFD5C4;
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+}
+#bookingTitleHeader{
+    width: 33%;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px;
+}
+#iconHolder{
+    width: 33%;
+}
+#iconHolder .xIcon{
+    background-image: url(img/xIcon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+}
+#allergy{
+    width: 90%;
+    margin: 0 auto;
+}
+.text-link{
+    cursor: pointer;
+    font-size: inherit;
+    text-decoration: underline;
+    font-weight: inherit;
+}
+#calendar {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    margin: 20px auto;
+}
+#calendar #header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #EFD5C4;
+    border: solid black;
+    padding: 1rem;
+} 
+#calendar #days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 100px);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: solid black;
+}
+#days {
+    display: grid;
+    /* width: 75%; */
+    grid-template-columns: repeat(7, 100px);
+    /* gap: 0.5rem; */
+    height: auto;
+    text-align: center;
+    border: solid black;
+}
+#days div {
+    padding: 0.5rem;
+    cursor: pointer;
+    background-color: #E8E8DE;
+    border: solid black;
+}
+#days div:nth-child(even):not(.not-of-this-month){
+    background-color: #D8D4C9;
+} 
+#days .not-of-this-month{
+    background-color: #FFFFFF;
+    color: rgba(0, 0, 0, 0.5);
+}
+.not-of-this-month .booking-button{
+    pointer-events: none;
+    opacity: 0.5;
+    background-color: #ddbe697c;
+    border: solid #bc9f4a7f;
+    color: #35453A;
+}
+.no-available-seats .booking-button{
+    pointer-events: none;
+    opacity: 0.5;
+    background-color: #4f4f4f7c;
+    border: solid #7878787f;
+    color: #4f6355;
+}
+#month-nav{
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto;
+}
+.month-nav-button{
+    margin: 5px;
+}
+#home{
+    background-image: url(img/GHmain.png);
+    width: auto;
+    height: 500px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+footer{
+    background-color: #EFD5C4;
+    height: 100px;
+    width: 100%;
+    bottom: 0;
+    position: relative;
+    margin-top: 20px;
+}
+#cred{
+    font-size: small;
+}
+#cred a{
+    font-size: small;
+}
+#secret-button{
+    background-image: url(img/RoundGeoLogo2.png);
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+.flex-overlay-container{
+    max-width: fit-content;
+    min-width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #EFD5C4;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 80%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#showing-table{
+    display: flex;
+    flex-direction: row;
+}
+#select-date{
+    display: flex;
+    flex-direction: row;
+}
+.logged-in-button{
+    margin: 3px;
+    border-radius: 5px;
+}
+.warn{
+    color: red;
+    font-size: 20px;
+}

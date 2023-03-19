@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="img/RoundGeoLogo2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Geographer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="wrapper">
+            <div class="navContainer">
+                <img src="img/GeoLogo.jpeg" alt="chocolateer geographer logo">
+                <nav>
+                    <p @click="calendarScrollCombiner()">Reserve Your Seats</p>
+                    <p @click="showPrivate">Request a Private Tasting</p>
+                    <!-- <p>Shop Chocolates</p> -->
+                    <div class="dropdown"><p>About</p>
+                        <div class="dropdown-menu">
+                            <p @click="showContact">Contact Me</p>
+                            <p @click="showExpect">What to Expect at a Chocolate Tasting</p>
+                            <p @click="showME">Who Am I</p>
+                            <div id="socials">
+                                <a href="https://instagram.com/thechocolategeographer"><img src="img/Instagram.png" alt="Instagram"></a>
+                                <a href="facebook link"><img src="img/facebook-logo.png" alt="Facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div v-if="seeContact" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideContact"></div></div>
+                <div class="contact-overlay">
+                    <p>My Email:</p>
+                    <a href="mailto:ashley@thechocolategeographer.com?subject=Contact Me">ashley@thechocolategeographer.com</a>
+                </div>
+            </div>
+            <div v-if="seePrivate" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hidePrivate"></div></div>
+                <div class="contact-overlay">
+                    <h2>Request a Private Tasting or Information about Private Tastings</h2>
+                        <form @submit.prevent="submitForm">
+                            <input v-model="contactFormData.name" type="text" placeholder="Full Name" required />
+                            <input v-model="contactFormData.email" type="email" placeholder="Email" required />
+                            <p class="form-text">Please enter a phone number if that is your perferred form of contact. Otherwise leave this blank.</p>
+                            <input v-model="contactFormData.number" type="tel" placeholder="Phone" />
+                            <p class="form-text">If you are requesting a Private Tasting what is your perferred date. Otherwise leave this blank.</p>
+                            <input v-model="contactFormData.date" type="date" placeholder="Date Requested" />
+                            <p class="form-text">What is your question if you are inquiring about Private Tastings.</p>
+                            <p class="form-text">If you are requesting a Private Tasting Tell me a little bit about your event.</p>
+                            <textarea v-model="contactFormData.body" placeholder="Message" required></textarea> <br>
+                            <button type="submit" class="logged-in-button">Send</button>
+                            <p v-if="submitStatus === 'success'">Email sent successfully!</p>
+                            <p v-if="submitStatus === 'error'">Error sending email.</p>
+                      </form>
+                </div>
+            </div>
+            <div v-if="whoAmI" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideME"></div></div>
+                <div class="info-overlay">
+                    <div id="who-img-contain"><div id="who-img"></div></div>
+                    <div id="who-txt">
+                        <h2>About Me</h2>
+                        <p>I have always been the kind of person that always has chocolate on hand. (Is that you, too? I knew I
+                            liked you.) When I'm not eating chocolate or talking about chocolate you can most likely find me
+                            outside enjoying the sunshine with my husband, our four kids and our corgi! We love hiking, riding
+                            bikes, swimming, playing games and eating meals in the backyard. I've got this red dirt in my soul, and
+                            feel so fortunate to live and work in this beautiful place, where my roots run deep.</p>
+                    </div>
+                </div>
+            </div>
+            <div v-if="expectations" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideExpect"></div></div>
+                    <div class="expect-overlay">
+                        <h2>What to Expect at a Chocolate Tasting</h2>
+                        <div class="pic-text-flex" id="expect-box-1">
+                            <div class="expect-img-contain"><div id="expect-1"></div></div>
+                            <p>Chocolate, like fine wines, coffee, and cheese, contains its own set of unique flavor profiles. In these fun
+                                and engaging classes, you will taste EIGHT generously sized samples of craft chocolate bars from a wide
+                                variety of origins, allowing you the opportunity to taste the unique flavor profile of each.</p>
+                        </div>
+                        <div class="pic-text-flex" id="expect-box-2">
+                            <p>We’ll also taste chocolate that showcases the creativity and culture of chocolate makers that have included
+                                additional flavors in their bars. I’ll teach you the basics of tasting, and will provide palate cleansers,
+                                including water, to enhance your tasting experience.</p> 
+                            <div class="expect-img-contain"><div id="expect-2"></div></div>
+                        </div>
+                        <div class="pic-text-flex" id="expect-box-3">
+                            <div class="expect-img-contain"><div id="expect-3"></div></div>
+                            <p>We’ll talk about the history of chocolate, the
+                                process of how its made from cacao beans to finished bar. You’ll learn more than you thought there
+                                was to know about chocolate, and you’ll never eat chocolate the same again!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="heroCTA">
+                <div id="CTA">
+                    <h1>The Chocolate Geographer</h1>
+                        <p>Experience Chocolates like you never have before. The Chocolate Geographer imports craft chocolate from around the world.
+                            We would like to offer you the oppurtunity to try new flavors and exotic combinations, all while gaining a deeper appreciation
+                            for chocolate.
+                        </p>
+                        <p>
+                            Come sit with us and try something new as we bring the whole world of chocolate right to you.
+                        </p>
+                    <button id="reserveCTA" @click="calendarScrollCombiner()">Reserve Your Seats</button>
+                </div>
+                <div id="CTAimageContainer"><div id="CTAimage"></div></div>
+            </div>
+            <div id="divider-line"></div>
+            <div id="bio-area">
+                <div id="bio-image-container"><div id="bio-image"></div></div>
+                <div id="bio-text">
+                    <h2 class="page-head">Why Chocolate and Geography?</h2>
+                    <p>I graduated from California State University, Fullerton with a degree in Geography, but it wasn't until I
+                        first found craft chocolate early in 2020 that I started to combine my deep love for chocolate with my
+                        abiding love for geography. Aside from finding it wildly delicious, I found that these small batch
+                        chocolate makers added a lot of geographical information as well, such as where they had sourced their
+                        cacao from and what makes the cacao from that specific region so unique. They shared about their
+                        concern for biodiversity and sustainable farming, as well as making sure cacao farmers are paid a living
+                        wage, to ensure the ethical treatment of those who grow the cacao that eventually becomes our
+                        favorite sweet. It's all geography, and it's never been more delicious!</p>
+                </div>
+            </div>
+            <div id="empty-div" ref="calendar"></div>
+            <div id="bookingSection">
+                <button id="bookingCTA" v-if="!reserving" @click="showCalendar">Reserve Your Seat</button>
+                <div v-if="reserving" id="bookingCalendar">
+                    <div id="bookingTitle">
+                        <div id="iconHolder"><div class="xIcon" @click="hideCalendar"></div></div>
+                        <div id="bookingTitleHeader">Reserve Your Seats</div>
+                    </div>
+                    <p id="allergy">If you have food allergies please be aware that this months chocolates may contain: allergies.<br>
+                        If you have concerns about food allergies feel free to <a class="text-link" @click="showContact">Contact Me</a> or <a class="text-link" @click="showPrivate">Request a Private Tasting</a> where I can more easily accommodate food allergies.</p>
+                    <calendar :month='month' :year='year' :reserve="reserveBox" :seats='availableDates'></calendar>
+                    <div id="month-nav">
+                        <button class="month-nav-button" v-if="showPrevMonthButton" @click="prevMonth">Back</button>
+                        <button class="month-nav-button" @click="nextMonth">Next</button>
+                    </div>
+                    <div v-if="showReserveBox" class="overlay">
+                        <div class="exitIcon"><div class="xIcon" @click="hideReserveBox"></div></div>
+                        <div class="flex-overlay-container">
+                            <h2>{{ reserveDate }}</h2>
+                            <label>Last Name: </label>
+                            <input v-model="inputName" type="text" placeholder="Name">
+                            <label>Number of Guests: </label>
+                            <input v-model="inputSeats" type="number" placeholder="Party Size">
+                            <button id="reserve-a-seat" @click="bookSeats">Book Now</button>
+                            <p class="warn">{{ errorMSG }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="seeLogIn" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideLogIn"></div></div>
+                <div class="flex-overlay-container">
+                    <input v-model="username" type="text" placeholder="Username">
+                    <input v-model="password" type="password" placeholder="Password">
+                    <button class="logged-in-button" id="log-in-button" @click="logIn">Log In</button>
+                    <p class="warn">{{ logMessage }}</p>
+                </div>
+            </div>
+            <div v-if="loggedIn" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="LogOut"></div></div>
+                <div class="flex-overlay-container">
+                    <button class="logged-in-button" id="addDates" @click="showAddDates">New Availabilities</button>
+                    <button class="logged-in-button" id="addChocolates" @Click="showupdateDates">Update Dates</button>
+                    <button class="logged-in-button" id="checkSeats" @click="showGetSeats">See Filled Seats</button>
+                    <button class="logged-in-button" id="deleteDates" @click="showDeleteDates">Remove Availabilities</button>
+                </div>
+            </div>
+            <div v-if="addDatesBox" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideAddDates"></div></div>
+                <div class="flex-overlay-container">
+                    <input type="number" min="1" max="12" v-model="inputMonth" placeholder="Month">
+                    <input type="number" min="1" max="31" v-model="inputDate" placeholder="Date">
+                    <input type="number" min="2023" max="2030" v-model="inputYear" placeholder="Year">
+                    <input type="number" min="1" max="12" v-model="inputSeats" placeholder="Seats">
+                    <button class="logged-in-button" @click="addDate">Add Date</button>
+                    <p class="warn">{{ dateMSG }}</p>
+                </div>
+            </div>
+            <div v-if="updateDates" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideupdateDates"></div></div>
+                <div class="flex-overlay-container">
+                    <div id="select-date">
+                        <input type="number" min="1" max="12" v-model="inputMonth" placeholder="Month">
+                        <input type="number" min="1" max="31" v-model="inputDate" placeholder="Date">
+                        <input type="number" min="2023" max="2030" v-model="inputYear" placeholder="Year">
+                    </div>
+                    <input type="number" min="1" max="12" v-model="inputSeats" placeholder="Seats">
+                    <button class="logged-in-button" @click="runUpdates">Update Date</button>
+                    <p class="warn">{{ dateMSG }}</p>
+                </div>
+            </div>
+            <div v-if="filledSeats" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideGetSeats"></div></div>
+                <div class="flex-overlay-container">
+                    <div id="select-date">
+                        <input type="number" min="1" max="12" v-model="inputMonth" placeholder="Month">
+                        <input type="number" min="1" max="31" v-model="inputDate" placeholder="Date">
+                        <input type="number" min="2023" max="2030" v-model="inputYear" placeholder="Year">
+                    </div>
+                    <button class="logged-in-button" @click="runGetSeats">Get Seats</button>
+                    <div id="showing-table" v-for="seat in filledSeatsList">
+                        <p>{{ seat.name }} : {{ seat.party }}</p> 
+                    </div>
+                    <p class="warn">{{ seatsWarn }}</p>
+                </div>
+            </div>
+            <div v-if="deleteDatesBox" class="overlay">
+                <div class="exitIcon"><div class="xIcon" @click="hideDeleteDates"></div></div>
+                <div class="flex-overlay-container">
+                    <div id="select-date">
+                        <input type="number" min="1" max="12" v-model="inputMonth" placeholder="Month">
+                        <input type="number" min="1" max="31" v-model="inputDate" placeholder="Date">
+                        <input type="number" min="2023" max="2030" v-model="inputYear" placeholder="Year">
+                    </div>
+                    <button class="logged-in-button" @click="removeDate">Remove this Date.</button>
+                    <p class="warn">{{ dateMSG }}</p>
+                </div>
+            </div>
+            <div id="secret-button" @click="showLogIn"></div>
+            <!-- <div id="home"></div> -->
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3.2.22/dist/vue.global.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+<footer>
+    <div id="sources">
+        <p id="cred">Instagram icon by <a href="https://freeicons.io/profile/5596">shivani</a> on <a href="https://freeicons.io">freeicons.io</a></p>
+        <p id="cred">X icon by <a href="https://freeicons.io/profile/2257">www.wishforge.games</a> on <a href="https://freeicons.io">freeicons.io</a></p>
+        <p id="cred">Facebook Icon by <a href="https://freeicons.io/profile/3">icon king1</a> on <a href="https://freeicons.io">freeicons.io</a></p>          
+    </div>
+</footer>
+</html>
